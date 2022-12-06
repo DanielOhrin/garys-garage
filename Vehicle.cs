@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace Garage
 {
@@ -18,6 +19,13 @@ namespace Garage
         public virtual void Stop()
         {
             Console.WriteLine("The vehicle gently rolls to a stop!");
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder(MainColor);
+            sb.Append($" {GetType().Name}");
+
+            return sb.ToString();
         }
     }
 }

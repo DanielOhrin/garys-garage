@@ -7,56 +7,44 @@ namespace Garage
     {
         static void Main(string[] args)
         {
-            Zero fxs = new Zero();
-            Zero fx = new Zero();
-            Tesla modelS = new Tesla();
+            Zero fxs = new Zero
+            {
+                MainColor = "blue"
+            };
+            Zero fx = new Zero
+            {
+                MainColor = "white"
+            };
+            Tesla modelS = new Tesla
+            {
+                MainColor = "titanium white"
+            };
 
             List<IElectricVehicle> electricVehicles = new List<IElectricVehicle>() {
                 fx, fxs, modelS
             };
 
-            Console.WriteLine("Electric Vehicles");
-            foreach (IElectricVehicle ev in electricVehicles)
+
+            Ram ram = new Ram
             {
-                Console.WriteLine($"{ev.CurrentChargePercentage}");
-            }
-
-            foreach (IElectricVehicle ev in electricVehicles)
+                MainColor = "black"
+            };
+            Cessna cessna150 = new Cessna
             {
-                // This should charge the vehicle to 100%
-                ev.ChargeBattery();
-            }
-
-            foreach (IElectricVehicle ev in electricVehicles)
-            {
-                Console.WriteLine($"{ev.CurrentChargePercentage}");
-            }
-
-            /***********************************************/
-
-            Ram ram = new Ram();
-            Cessna cessna150 = new Cessna();
+                MainColor = "red"
+            };
 
             List<IGasVehicle> gasVehicles = new List<IGasVehicle>() {
                 ram, cessna150
             };
 
-            Console.WriteLine("Gas Vehicles");
-            foreach (IGasVehicle gv in gasVehicles)
-            {
-                Console.WriteLine($"{gv.CurrentTankPercentage}");
-            }
+            /*******************STATIONS******************/
 
-            foreach (IGasVehicle gv in gasVehicles)
-            {
-                // This should completely refuel the gas tank
-                gv.RefuelTank();
-            }
+            GasStation jerrys = new GasStation();
+            BatteryStation chargetopia = new BatteryStation();
 
-            foreach (IGasVehicle gv in gasVehicles)
-            {
-                Console.WriteLine($"{gv.CurrentTankPercentage}");
-            }
+            jerrys.Refuel(gasVehicles);
+            chargetopia.Refuel(electricVehicles);
         }
     }
 }
